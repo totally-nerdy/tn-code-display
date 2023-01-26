@@ -1,0 +1,27 @@
+{
+  "name": "tn-code-display",
+  "version": "1.0.0",
+  "description": "The web component to display code",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx uglifyjs --compress --mangle --source-map --output ./dist/tn-code-display.min.js -- index.js"
+  },
+  "keywords": [
+    "web",
+    "component",
+    "highlight",
+    "format",
+    "display",
+    "code"
+  ],
+  "author": "Totally Nerdy Ltd",
+  "license": "MIT",
+  "devDependencies": {
+    "uglify-js": "^3.17.4"
+  },
+  "engines": {
+    "node": "~18.13",
+    "npm": "~8.19"
+  }
+}
