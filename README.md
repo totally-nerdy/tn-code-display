@@ -22,7 +22,7 @@ own sandbox, without being affected nor affect other elements on the same webpag
 ## Simple usage example
 
 ```
-<script type="module" src="https://cdn.jsdelivr.net/gh/totally-nerdy/tn-code-display/dist/tn-code-display.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/gh/totally-nerdy/tn-code-display@1.1.0/dist/tn-code-display.min.js"></script>
 <tn-code-display data-language="javascript">
     <textarea>
         const variable = 'variable';
