@@ -27,4 +27,4 @@ own sandbox, without being affected nor affect other elements on the same webpag
 </tn-code-display>
 ```
 
-Visit the example folder for more examples.
+Visit the docs folder for more examples.
