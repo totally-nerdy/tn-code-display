@@ -1,22 +1,34 @@
 <html lang="en">
 <head>
     <title>The web component to display code - examples</title>
-    <script type="module" src="https://cdn.jsdelivr.net/gh/totally-nerdy/tn-code-display/dist/tn-code-display.min.js"></script>
+    <script type="module"
+            src="https://cdn.jsdelivr.net/gh/totally-nerdy/tn-code-display/dist/tn-code-display.min.js"></script>
 </head>
 <body>
 <h1>The web component to display code - examples</h1>
-<h2>HTML</h2>
+<p>
+    The component use's <a href="https://highlightjs.org/" target="_blank">highlight.js</a> with style monokai-sublime
+    as a default.
+    Following languages are supported as of now: CSS, SCSS, Less, JavaScript and HTML. Don't hesitate to add the
+    languages you need and create a PR. We're happy about every contribution.
+</p>
+<p>
+    Please find a real-world example in our blog post "<a
+        href="https://www.totally-nerdy.com/blog/post/18679/how-to-add-a-go-to-top-button-to-your-rocketspark-website/"
+        target="_blank">How to add a "Go to Top" button to your Rocketspark website</a>".
+</p>
+<h2>HTML (default style monokai-sublime)</h2>
 <tn-code-display data-language="html">
     <textarea><button onclick="goToTopFunction()" id="goToTopBtn" title="Go to top">Go to top</button></textarea>
 </tn-code-display>
-<h2>CSS</h2>
-<tn-code-display data-language="css">
+<h2>CSS (style default)</h2>
+<tn-code-display data-language="css" data-style="default">
   <textarea>
   #goToTopBtn {    display: none; /* Hidden by default */    position: fixed; /* Fixed/sticky position */    bottom: 20px; /* Place the button at the bottom of the page */    right: 30px; /* Place the button 30px from the right */    z-index: 99; /* Make sure it does not overlap */    border: none; /* Remove borders */    outline: none; /* Remove outline */    background-color: #5381e0; /* Set a background color */    color: white; /* Text color */    cursor: pointer; /* Add a mouse pointer on hover */    padding: 15px; /* Some padding */    border-radius: 21.875rem; /* Rounded corners */    font-size: 18px; /* Increase font size */  }  #goToTopBtn:hover {    background-color: #3563c2; /* Add a different background on hover */  }
   </textarea>
 </tn-code-display>
-<h2>JavaScript</h2>
-<tn-code-display data-language="javascript">
+<h2>JavaScript (style base16/tomorrow)</h2>
+<tn-code-display data-language="javascript" data-style="base16/tomorrow">
   <textarea>
     function scrollFunction(button) {
     if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
