@@ -2,7 +2,7 @@
 <head>
     <title>The web component to display code - examples</title>
     <script type="module"
-            src="https://cdn.jsdelivr.net/gh/totally-nerdy/tn-code-display@1.1.0/dist/tn-code-display.min.js"></script>
+            src="https://cdn.jsdelivr.net/gh/totally-nerdy/tn-code-display@1.2.0/dist/tn-code-display.min.js"></script>
 </head>
 <body>
 <h1>The web component to display code - examples</h1>
@@ -18,7 +18,7 @@
         target="_blank">How to add a "Go to Top" button to your Rocketspark website</a>".
 </p>
 <h2>HTML (default style monokai-sublime)</h2>
-<tn-code-display data-language="html">
+<tn-code-display data-language="html" data-loading-color="#00f">
     <textarea><button onclick="goToTopFunction()" id="goToTopBtn" title="Go to top">Go to top</button></textarea>
 </tn-code-display>
 <h2>CSS (style default)</h2>
@@ -28,7 +28,7 @@
   </textarea>
 </tn-code-display>
 <h2>JavaScript (style base16/tomorrow)</h2>
-<tn-code-display data-language="javascript" data-style="base16/tomorrow">
+<tn-code-display data-language="javascript" data-style="base16/tomorrow" data-loading-color="#f00">
   <textarea>
     function scrollFunction(button) {
     if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
