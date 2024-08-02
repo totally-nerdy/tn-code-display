@@ -23,5 +23,16 @@
   "engines": {
     "node": "~18.13",
     "npm": "~8.19"
-  }
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/totally-nerdy/tn-code-display.git"
+  },
+  "bugs": {
+    "url": "https://github.com/totally-nerdy/tn-code-display/issues"
+  },
+  "homepage": "https://github.com/totally-nerdy/tn-code-display#readme"
 }
