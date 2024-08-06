@@ -1,6 +1,6 @@
 {
   "name": "@totally-nerdy/tn-code-display",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "The web component to display code",
   "main": "index.js",
   "scripts": {

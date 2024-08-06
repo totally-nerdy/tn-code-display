@@ -64,7 +64,7 @@ class CodeDisplay extends HTMLElement {
       /**
        * Adding event listeners for clipboard functionality
        */
-      if (this._clipboard) {
+      if (this._clipboard && self._prettyCode !== '') {
         self.shadowRoot.querySelector('pre').addEventListener('mouseenter', this._onMouseEnter)
         self.shadowRoot.querySelector('pre').addEventListener('mouseleave', this._onMouseLeave)
         self.shadowRoot.querySelector('pre div[id="clipboard"]').addEventListener('click', this._onClickClipboard.bind(this))
