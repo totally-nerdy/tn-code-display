@@ -1,3 +1,5 @@
+import { getProcessor } from 'https://www.unpkg.com/sh-syntax@0.5.8/lib/browser.js'
+
 class CodeDisplay extends HTMLElement {
   constructor () {
     super()
@@ -45,12 +47,28 @@ class CodeDisplay extends HTMLElement {
 
       self.shadowRoot.appendChild(_style)
     }
-    this._display = function (self) {
-      if (typeof prettier !== 'undefined') {
+    this._display = async function (self) {
+      if (typeof prettier !== 'undefined' && ['css', 'scss', 'less', 'javascript', 'html'].includes(self._parser)) {
         self._prettyCode = prettier.format(self._code, {
           parser: self._parser,
           plugins: prettierPlugins
         })
+      } else if (typeof getProcessor !== 'undefined' && ['bash'].includes(self._parser)) {
+        const processor = getProcessor(() =>
+          fetch('https://www.unpkg.com/sh-syntax@0.5.8/main.wasm'),
+        )
+        const parse = (text, options) => processor(text, options)
+        const print = (textOrAst, options) => {
+          if (typeof textOrAst === 'string') {
+            return processor(textOrAst, {
+              ...options,
+              print: true,
+            })
+          }
+          return processor(textOrAst, options)
+        }
+        const ast = await parse(self._code)
+        self._prettyCode = await print(ast, { originalText: self._code })
       } else {
         self._prettyCode = self._code
       }
@@ -148,6 +166,9 @@ class CodeDisplay extends HTMLElement {
         this._scripts.push('https://www.unpkg.com/prettier@2.8.3/standalone.js')
         this._scripts.push('https://www.unpkg.com/prettier@2.8.3/parser-html.js')
         this._parser = 'html'
+        break
+      case 'bash':
+        this._parser = 'bash'
         break
     }
 

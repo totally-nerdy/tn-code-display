@@ -1,3 +1,7 @@
+## 1.5.0 (Oct 16, 2025)
+
+* Added support for bash parser via WASM
+
 ## 1.4.2 (Aug 6, 2024)
 
 * Don't show clipboard button when code box is empty
