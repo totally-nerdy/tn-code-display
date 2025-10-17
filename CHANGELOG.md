@@ -1,3 +1,8 @@
+## 1.6.0 (Oct 17, 2025)
+
+* Added support for PHP parser
+* Bumped prettier to version 3.6.2
+
 ## 1.5.0 (Oct 16, 2025)
 
 * Added support for bash parser via WASM

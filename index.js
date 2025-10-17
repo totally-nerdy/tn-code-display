@@ -48,14 +48,15 @@ class CodeDisplay extends HTMLElement {
       self.shadowRoot.appendChild(_style)
     }
     this._display = async function (self) {
-      if (typeof prettier !== 'undefined' && ['css', 'scss', 'less', 'javascript', 'html'].includes(self._parser)) {
-        self._prettyCode = prettier.format(self._code, {
+      if (typeof prettier !== 'undefined' && ['css', 'scss', 'less', 'javascript', 'html', 'php'].includes(self._parser)) {
+        self._prettyCode = await prettier.format(self._code, {
           parser: self._parser,
-          plugins: prettierPlugins
+          plugins: prettierPlugins,
+          phpVersion: '8.4',
         })
       } else if (typeof getProcessor !== 'undefined' && ['bash'].includes(self._parser)) {
         const processor = getProcessor(() =>
-          fetch('https://www.unpkg.com/sh-syntax@0.5.8/main.wasm'),
+          fetch('https://unpkg.com/sh-syntax@0.5.8/main.wasm'),
         )
         const parse = (text, options) => processor(text, options)
         const print = (textOrAst, options) => {
@@ -143,29 +144,34 @@ class CodeDisplay extends HTMLElement {
 
     switch (this._language) {
       case 'css':
-        this._scripts.push('https://www.unpkg.com/prettier@2.8.3/standalone.js')
-        this._scripts.push('https://www.unpkg.com/prettier@2.8.3/parser-postcss.js')
+        this._scripts.push('https://unpkg.com/prettier@3.6.2/standalone.js')
+        this._scripts.push('https://unpkg.com/prettier@3.6.2/parser-postcss.js')
         this._parser = 'css'
         break
       case 'scss':
-        this._scripts.push('https://www.unpkg.com/prettier@2.8.3/standalone.js')
-        this._scripts.push('https://www.unpkg.com/prettier@2.8.3/parser-postcss.js')
+        this._scripts.push('https://unpkg.com/prettier@3.6.2/standalone.js')
+        this._scripts.push('https://unpkg.com/prettier@3.6.2/parser-postcss.js')
         this._parser = 'scss'
         break
       case 'less':
-        this._scripts.push('https://www.unpkg.com/prettier@2.8.3/standalone.js')
-        this._scripts.push('https://www.unpkg.com/prettier@2.8.3/parser-postcss.js')
+        this._scripts.push('https://unpkg.com/prettier@3.6.2/standalone.js')
+        this._scripts.push('https://unpkg.com/prettier@3.6.2/parser-postcss.js')
         this._parser = 'less'
         break
       case 'javascript':
-        this._scripts.push('https://www.unpkg.com/prettier@2.8.3/standalone.js')
-        this._scripts.push('https://www.unpkg.com/prettier@2.8.3/parser-meriyah.js')
+        this._scripts.push('https://unpkg.com/prettier@3.6.2/standalone.js')
+        this._scripts.push('https://unpkg.com/prettier@3.6.2/parser-meriyah.js')
         this._parser = 'meriyah'
         break
       case 'html':
-        this._scripts.push('https://www.unpkg.com/prettier@2.8.3/standalone.js')
-        this._scripts.push('https://www.unpkg.com/prettier@2.8.3/parser-html.js')
+        this._scripts.push('https://unpkg.com/prettier@3.6.2/standalone.js')
+        this._scripts.push('https://unpkg.com/prettier@3.6.2/parser-html.js')
         this._parser = 'html'
+        break
+      case 'php':
+        this._scripts.push('https://unpkg.com/prettier@3.6.2/standalone.js')
+        this._scripts.push('https://unpkg.com/@prettier/plugin-php@0.24.0/standalone.js')
+        this._parser = 'php'
         break
       case 'bash':
         this._parser = 'bash'
